@@ -1,0 +1,50 @@
+#container { 
+    width: 95%; 
+    height:600px; 
+    border:2px solid #ccc; 
+    padding: 10px; }
+
+body {
+    background: #ffffff;  
+    text-align: center; 
+    padding: 20px; 
+    color: #575757; 
+    font: 14px/21px Arial,Helvetica,sans-serif;
+}
+ 
+a {
+    color: #B93F14;
+}
+ 
+a:hover {
+    text-decoration: none;
+}
+ 
+ol {
+    width: 600px; 
+    text-align: left; 
+    margin: 15px auto
+}
+
+canvas {
+  border: 1px solid black;
+	cursor: none;
+}
+
+.note {
+    background-color: rgb(255,240,70);
+    height: 100px;
+    padding: 5px;
+    position:absolute;
+    width:80px;
+    -webkit-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+}
+
+#coords {
+    background: #ffffff;  
+    text-align: center; 
+    padding: 20px; 
+    color: #575757; 
+    font: 14px/21px Arial,Helvetica,sans-serif;
+}
