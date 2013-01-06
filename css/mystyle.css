@@ -1,12 +1,33 @@
 .container { 
    
     width: 95%; 
-    height:600px; 
+    height:100%px; 
     border:2px solid #ccc; 
-    padding: 10px; }
+    padding: 50px; 
+}
+
+.menu {
+    height: 30px;
+   
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+    display: box;
+    box-orient: horizontal;
+
+    text-align: center; 
+   
+    color: #575757; 
+    font: 16px Arial,Helvetica,sans-serif;
+    background-color: #f5f5f5;
+     width: 100%;
+}
+
+
 
 body {
-    width: 95%; 
+   
     text-align: center; 
     padding: 20px; 
     color: #575757; 
@@ -53,6 +74,7 @@ canvas {
 .box {
    
     height: 600px;
+    width: 100%;
     border: 1px solid #555;
     font: 14px Arial;
     display: -webkit-box;
@@ -66,7 +88,7 @@ canvas {
 }
 
 .box #todo {
-        width: 33%;
+        width: 300px;
 
      border: 1px solid #555;
 
@@ -74,14 +96,14 @@ canvas {
 
 .box #inprogress {
     
-    width: 33%;width: 33%;
+    width: 300px;
      border: 1px solid #555;
 
 }
 
 .box #done {
     
-    width: 34%;
+     width: 300px;
      border: 1px solid #555;
 
 }
@@ -89,6 +111,7 @@ canvas {
 .boxheaders {
    
     height: 60px;
+    width: 100%;
     border: 1px solid #555;
     display: -webkit-box;
     -webkit-box-orient: horizontal;
@@ -109,21 +132,21 @@ canvas {
 
 .boxheaders #todo {
    
-    width: 33%;
+   width: 300px;
      border: 1px solid #555;
 
 }
 
 .boxheaders #inprogress {
     
-    width: 33%;
+     width: 300px;
      border: 1px solid #555;
 
 }
 
 .boxheaders #done {
  
-    width: 34%;
+     width: 300px;
      border: 1px solid #555;
 
 }
