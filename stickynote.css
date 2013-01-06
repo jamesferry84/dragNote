@@ -1,0 +1,9 @@
+.note {
+    background-color: rgb(255,240,70);
+    height: 100px;
+    padding: 5px;
+    position:absolute;
+    width:80px;
+    -webkit-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+}
