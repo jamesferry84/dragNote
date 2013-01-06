@@ -1,0 +1,38 @@
+<!DOCTYPE html>  
+<html lanf="en">  
+<head>  
+    <meta charset='utf-8' />  
+    <title>Draggable Sticky Notes Project</title>  
+    <link rel="stylesheet" href="css/mystyle.css" />  
+    <link rel="stylesheet" href="css/stickynote.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <!--<script type = "text/javascript" src="js/board.js"></script> -->
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+    <script>
+    $(function() {
+        $( ".note" ).draggable({ containment: "#todo", scroll: false });
+        $(".note" ).draggable({cursor: "crosshair" });
+
+    });
+     
+   
+    </script>
+</head>  
+<body>  
+   
+        <h1>Sticky Note Drag</h1>
+        <div class="container">
+            <div class="note" class="draggable ui-widget-content">
+            </div>
+            <div class = "box">
+                <div id="todo"><h1>To Do</h1> </div>
+                <div id="inprogress"><h1>In Progress</h1></div>
+                <div id ="done"><h1>Done</h1></div>
+             </div>
+        </div>
+
+    
+</body>  
+</html>  
