@@ -11,14 +11,7 @@
     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 
-    <script>
-    $(function() {
-        $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
-        $(".note" ).draggable({cursor: "crosshair" });
 
-    });
-   
-    </script>
 </head>  
 <body>  
         <h1>Sticky Note Drag</h1>
@@ -26,7 +19,7 @@
            
             <div class ="container">
                 <div class = "menu">
-                     <input type="button" onclick="createNote();" value ="Create New Note" disabled />
+                     <button id="newNote"> Create New Note </button>
                 </div>
                
                 <div class ="boxheaders">
@@ -34,17 +27,57 @@
                     <div id="inprogress"><h1>In Progress</h1></div>
                     <div id ="done"><h1>Done</h1></div>
                 </div>
-                 <div class="note" class="draggable ui-widget-content">
+                 <div class="note" >
                     <h1> Title</h1>
                     <p>Text of the note</p>
                     <footer>06-01-2013</footer>
                 </div>
+               
                 <div class = "box">
                     <div id="todo"></div>
                     <div id="inprogress"></div>
                     <div id ="done"></div>
                 </div>
             </div>
+
+
+     <script>
+
+     var  i = 0;
+    $(function() {
+        $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
+        $(".note" ).draggable({cursor: "crosshair" });
+
+    });
+    
+
+    function Note()
+    {
+
+            var note = document.createElement('div');
+            note.className = 'note';
+
+            //this.note = note;
+            $(".note").after(note);
+           //$('.note').clone().insertAfter('div.note:last').offset({left: 90, top: 400});
+            $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
+
+            return this;
+            alert("this is the note() function");
+
+    }
+
+    $(document).ready(function() {
+       
+        $('#newNote').click(function()
+        {
+            Note();
+        })
+    });
+   
+   
+
+    </script>
             
 </body>  
 </html>  

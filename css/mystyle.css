@@ -54,10 +54,11 @@ canvas {
 }
 
 .note {
+     
     background-color: rgb(255,240,70);
     height: 120px;
     padding: 5px;
-    position:absolute;
+    position: absolute;
     width:120px;
     -webkit-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
     -moz-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
@@ -101,7 +102,7 @@ canvas {
    
     height: 600px;
     width: 100%;
-    border: 1px solid #555;
+   
     font: 14px Arial;
     display: -webkit-box;
     -webkit-box-orient: horizontal;
@@ -117,6 +118,7 @@ canvas {
         width: 300px;
 
      border: 1px solid #555;
+
 
 }
 
@@ -169,7 +171,7 @@ canvas {
      width: 300px;
      border: 1px solid #555;
      background-color: #93eaeb;
-      border: 1px solid #555;
+ 
 }
 
 .boxheaders #done {
@@ -177,7 +179,7 @@ canvas {
      width: 300px;
      border: 1px solid #555;
      background-color: #eca478;
-      border: 1px solid #555;
+  
 }
 
 
