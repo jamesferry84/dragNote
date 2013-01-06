@@ -19,7 +19,8 @@
            
             <div class ="container">
                 <div class = "menu">
-                     <button id="newNote"> Create New Note </button>
+                   <a href="#" id="newNote"><img src="images/add.png" alt="Add Sticky Note" title="Add a new sticky note"></a>
+                   <!-- <button id="newNote"> Create New Note </button>-->
                 </div>
                
                 <div class ="boxheaders">
@@ -42,37 +43,34 @@
 
 
      <script>
-
-     var  i = 0;
-    $(function() {
+     
+     $(function() {
         $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
         $(".note" ).draggable({cursor: "crosshair" });
 
     });
-    
+
 
     function Note()
     {
-
-            var note = document.createElement('div');
-            note.className = 'note';
-
-            //this.note = note;
-            $(".note").after(note);
-           //$('.note').clone().insertAfter('div.note:last').offset({left: 90, top: 400});
-            $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
-
-            return this;
-            alert("this is the note() function");
-
+        var stickynote = $('<div class="note " />').appendTo($('#todo'));
+        $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
+           // var note = document.createElement('div');
+            
+        // note.className = 'note';
+         //this.note = note;
+        // $(".note").appendTo($('#todo'));
+        //$('.note').clone().insertAfter('div.note:last').offset({left: 90, top: 400});
+        //alert("this is the note() function");
     }
 
-    $(document).ready(function() {
+    $(document).ready(function(e) {
        
         $('#newNote').click(function()
         {
             Note();
-        })
+            return false;
+        });
     });
    
    
