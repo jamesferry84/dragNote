@@ -6,7 +6,7 @@
     padding: 10px; }
 
 body {
-
+    width: 95%; 
     text-align: center; 
     padding: 20px; 
     color: #575757; 
@@ -64,42 +64,74 @@ canvas {
 
 
 }
+
 .box #todo {
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-    box-flex: 1;
+        width: 33%;
 
      border: 1px solid #555;
 
 }
 
 .box #inprogress {
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-    box-flex: 1;
-
+    
+    width: 33%;width: 33%;
      border: 1px solid #555;
 
 }
 
 .box #done {
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-    box-flex: 1;
+    
+    width: 34%;
+     border: 1px solid #555;
 
+}
+
+.boxheaders {
+   
+    height: 60px;
+    border: 1px solid #555;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+    display: box;
+    box-orient: horizontal;
+
+    text-align: center; 
+   
+    color: #575757; 
+    font: 16px Arial,Helvetica,sans-serif;
+    background-color: #c6c6c6;
+    
+
+
+}
+
+.boxheaders #todo {
+   
+    width: 33%;
+     border: 1px solid #555;
+
+}
+
+.boxheaders #inprogress {
+    
+    width: 33%;
+     border: 1px solid #555;
+
+}
+
+.boxheaders #done {
+ 
+    width: 34%;
      border: 1px solid #555;
 
 }
 
 
-.box > div h1 {
-    text-align: center; 
-    padding: 20px; 
-    color: #575757; 
-    font: 21px Arial,Helvetica,sans-serif;
-    background-color: #c6c6c6;
-    border: 0px 1px solid #555;
-    z-index: 1000000;
+.boxheaders > div h1 {
+    
+   
 }
 
 
