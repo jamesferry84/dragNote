@@ -53,51 +53,6 @@ canvas {
 	cursor: none;
 }
 
-.note {
-     
-    background-color: rgb(255,240,70);
-    height: 120px;
-    padding: 5px;
-    position: absolute;
-    width:120px;
-    -webkit-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
-    -moz-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
-     border:2px solid #000000; 
-}
-
-.note h1 {
-    text-align: center;
-    font: 16px Arial,Helvetica,sans-serif;
-    color: #000000;
-    background-color: #fcfad7;
-}
-
-.note p {
-    text-align: center;
-    font: 14px Arial,Helvetica,sans-serif;
-    color: #000000;
-    background-color: #fcfad7;
-}
-
-.note footer {
-    position: absolute;
-    bottom: 0;
-    right: 0;
- 
-
-    font: 10px Arial,Helvetica,sans-serif;
-    color: #000000;
-    background-color: #fcfad7;
-}
-
-#coords {
-    background: #ffffff;  
-    text-align: center; 
-    padding: 20px; 
-    color: #575757; 
-    font: 14px/21px Arial,Helvetica,sans-serif;
-}
-
 .box {
    
     height: 600px;
@@ -135,6 +90,83 @@ canvas {
      border: 1px solid #555;
 
 }
+
+.box #todo #box1{
+    width: 120px;
+    height: 120px;
+    float: left;
+    outline: 1px black dotted;
+    padding: 0px;
+    margin:10px;
+}
+
+.box #inprogress #box1{
+    width: 120px;
+    height: 120px;
+    float: left;
+    outline: 1px black dotted;
+    padding: 0px;
+    margin:10px;
+}
+
+.box #done #box1 {
+    width: 120px;
+    height: 120px;
+    float: left;
+    outline: 1px black dotted;
+    padding: 0px;
+    margin:10px;
+}
+
+
+
+.note {
+     
+    background-color: rgb(255,240,70);
+    height: 120px;
+    width:120px;
+    padding: 0px;
+    position: absolute;
+    outline: 1px black solid;
+    -webkit-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+    
+}
+
+.note h1 {
+    text-align: center;
+    font: 16px Arial,Helvetica,sans-serif;
+    color: #000000;
+    background-color: #fcfad7;
+}
+
+.note p {
+    text-align: center;
+    font: 14px Arial,Helvetica,sans-serif;
+    color: #000000;
+    background-color: #fcfad7;
+}
+
+.note footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+ 
+
+    font: 10px Arial,Helvetica,sans-serif;
+    color: #000000;
+    background-color: #fcfad7;
+}
+
+#coords {
+    background: #ffffff;  
+    text-align: center; 
+    padding: 20px; 
+    color: #575757; 
+    font: 14px/21px Arial,Helvetica,sans-serif;
+}
+
+
 
 .boxheaders {
    
