@@ -11,6 +11,7 @@
     <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
     <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
     <script src="jquery.ui.touch-punch.min.js"></script>
+    <script src="jquery.pulse.min.js"></script>
 
 </head>  
 <body>  
@@ -23,7 +24,7 @@
                    <a href="#" id="newNote">
                         <img src="images/add.png" alt="Add Sticky Note" title="Add a new sticky note" />
                     </a>
-                
+                    <input type ="button" id="clearStorage" value = "Clear Local Storage" />
                    <!-- <button id="newNote"> Create New Note </button>-->
                 </div>
                
@@ -76,8 +77,39 @@
 
 
      <script>
-     
+
     var numNotes = 0;
+    var loadNoteNum = 0;
+
+    
+    
+    
+    $(document).ready(function(e) {
+
+       // alert("testing storage");
+           if (localStorage.getItem('numNotes')) {
+            numNotes = JSON.parse(localStorage.getItem('numNotes'));
+            if (!numNotes > 0)
+            {
+                numNotes = 0;
+            }
+           // alert("exists! , numNotes = " + numNotes)
+                for (var i = 0; i < numNotes; i++)
+                {
+                   LoadNote();
+                }
+            }
+        });
+    
+     function LoadNote()
+    {
+        var selectedDiv = $('div #box1').eq(loadNoteNum);
+        var stickynote = $('<div class="note " />').appendTo($(selectedDiv));
+
+        $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
+        loadNoteNum++;
+    };
+
 
     function Note()
     {
@@ -85,16 +117,29 @@
        {
         var selectedDiv = $('div #box1').eq(numNotes);
         var stickynote = $('<div class="note " />').appendTo($(selectedDiv));
+
         $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
         numNotes++;
-    }
-    }
+        localStorage.setItem('numNotes', JSON.stringify(numNotes));
+        }
+    };
 
+   
     $(document).ready(function(e) {
        
         $('#newNote').click(function()
         {
             Note();
+            return false;
+        });
+    });
+
+    $(document).ready(function(e) {
+       
+        $('#clearStorage').click(function()
+        {
+            localStorage.clear();
+            alert("Local Storage Cleared")
             return false;
         });
     });
