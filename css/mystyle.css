@@ -1,3 +1,31 @@
+#overlay_form{
+position: absolute;
+border: 5px solid gray;
+padding: 10px;
+background: white;
+width: 270px;
+height: 190px;
+}
+#pop{
+display: block;
+border: 1px solid gray;
+width: 65px;
+text-align: center;
+padding: 6px;
+border-radius: 5px;
+text-decoration: none;
+margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
 .container { 
    
     width: 95%; 
@@ -49,6 +77,26 @@ a {
 a:hover {
     text-decoration: none;
 }
+
+#noteColor li {
+background-color:#A4DFF1;
+display:block;
+width:95px;
+line-height:0px;
+height:20px;
+margin:0px;
+ 
+font-family: Arial, Helvetica, sans-serif;
+font-size:8pt;
+font-weight:bold;
+padding-left:3px;
+padding-top:7px;
+color:#000000;
+}
+
+#noteColor li:hover {
+    background-color:#A4DFF1;
+}
  
 ol {
     width: 600px; 
@@ -75,6 +123,115 @@ canvas {
     box-orient: horizontal;
 
 
+}
+#yellowBox:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2) rotate(0.01deg);
+}
+#yellowBox div.active{
+     background-color: rgb(0,240,70);
+}
+#redBox:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2) rotate(0.01deg);
+}
+
+#blueBox:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2) rotate(0.01deg);
+}
+#greenBox:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2) rotate(0.01deg);
+}
+
+#yellowBox {
+
+    float: left;
+   background-color: rgb(255,240,70);
+    height: 32px;
+    width: 32px;
+   outline: 1px black solid;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+    display: box;
+    box-orient: horizontal;
+    -webkit-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+    margin: 10px;
+     -webkit-transition: -webkit-transform 1s ease-in-out 0s;
+    -moz-transition: -moz-transform 1s ease-in-out 0s;
+    -ms-transition: -moz-transform 1s ease-in-out 0s;
+    
+}
+
+#redBox {
+    float: left;
+   background-color: rgb(255,61,61);
+    height: 32px;
+    width: 32px;
+   outline: 1px black solid;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+    display: box;
+    box-orient: horizontal;
+    -webkit-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+    margin: 10px;
+    -webkit-transition: -webkit-transform 1s ease-in-out 0s;
+    -moz-transition: -moz-transform 1s ease-in-out 0s;
+    -ms-transition: -moz-transform 1s ease-in-out 0s;
+    
+}
+
+#blueBox {
+    float: left;
+   background-color: rgb(61,61,255);
+    height: 32px;
+    width: 32px;
+   outline: 1px black solid;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+    display: box;
+    box-orient: horizontal;
+    -webkit-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+    margin: 10px;
+    -webkit-transition: -webkit-transform 1s ease-in-out 0s;
+    -moz-transition: -moz-transform 1s ease-in-out 0s;
+    -ms-transition: -moz-transform 1s ease-in-out 0s;
+    
+}
+
+#greenBox {
+    float: left;
+   background-color: rgb(102,255,51);
+    height: 32px;
+    width: 32px;
+   outline: 1px black solid;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+    display: box;
+    box-orient: horizontal;
+    -webkit-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+    margin: 10px;
+    -webkit-transition: -webkit-transform 1s ease-in-out 0s;
+    -moz-transition: -moz-transform 1s ease-in-out 0s;
+    -ms-transition: -moz-transform 1s ease-in-out 0s;
+    
 }
 
 .box #todo {
@@ -128,7 +285,22 @@ canvas {
 
 
 
+.yellow {
+    background-color: rgb(255,240,70);
+}
 
+.red {
+    background-color: rgb(255,61,61);
+
+}
+
+.blue {
+    background-color: rgb(61,61,255);
+
+}
+.green {
+    background-color: rgb(102,255,51);
+}
 
 .note {
      

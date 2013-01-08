@@ -13,17 +13,36 @@
     <script src="jquery.ui.touch-punch.min.js"></script>
     <script src="jquery.pulse.min.js"></script>
 
+
 </head>  
 <body>  
         <h1>Sticky Note Drag</h1>
         
            
             <div class ="container">
+
+                <form id="overlay_form" style="display:none">
+                    <h2> Choose Colour</h2>
+                    <div id="yellowBox"></div>
+                        <div id="redBox"></div>
+                         <div id="blueBox"></div>
+                        <div id="greenBox"></div>
+                    <input type="button" value="Create Note" id="createNote" disabled />
+                    <input type="button" value="Close" id="close" />
+                
+                    </form>       
                 <div class = "menu">
                 
-                   <a href="#" id="newNote">
+
+
+                   
+                      
+                    <a href="#" id="newNote">
                         <img src="images/add.png" alt="Add Sticky Note" title="Add a new sticky note" />
                     </a>
+                    
+                    
+                    
                     <input type ="button" id="clearStorage" value = "Clear Local Storage" />
                    <!-- <button id="newNote"> Create New Note </button>-->
                 </div>
@@ -71,6 +90,8 @@
                         <div id="box1"></div>
                          <div id="box1"></div>
                         <div id="box1"></div>
+
+
                     </div>
                 </div>
             </div>
@@ -80,10 +101,12 @@
 
     var numNotes = 0;
     var loadNoteNum = 0;
+    var r = 0;
+    var g = 0;
+    var b = 0;
+    var color = null;
 
-    
-    
-    
+
     $(document).ready(function(e) {
 
        // alert("testing storage");
@@ -116,23 +139,74 @@
        if (numNotes < 8)
        {
         var selectedDiv = $('div #box1').eq(numNotes);
-        var stickynote = $('<div class="note " />').appendTo($(selectedDiv));
-
+        var stickynote = $('<div class="note "style="background-color: rgb(255,61,61)"  />').appendTo($(selectedDiv));
+        //$(this).css({"background-color": color});
+        //stickynote.style.cssText = 'background-color:' + color;
+       
+        $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
+        numNotes++;
+        localStorage.setItem('numNotes', JSON.stringify(numNotes));
+        }
+    };
+    function yellowNote()
+    {
+       if (numNotes < 8)
+       {
+        var selectedDiv = $('div #box1').eq(numNotes);
+        var stickynote = $('<div class="note "style="background-color: rgb(255,240,70)"  />').appendTo($(selectedDiv));
+        $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
+        numNotes++;
+        localStorage.setItem('numNotes', JSON.stringify(numNotes));
+        }
+    };
+    function redNote()
+    {
+       if (numNotes < 8)
+       {
+        var selectedDiv = $('div #box1').eq(numNotes);
+        var stickynote = $('<div class="note "style="background-color: rgb(255,61,61)"  />').appendTo($(selectedDiv));
+        $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
+        numNotes++;
+        localStorage.setItem('numNotes', JSON.stringify(numNotes));
+        }
+    };
+    function blueNote()
+    {
+       if (numNotes < 8)
+       {
+        var selectedDiv = $('div #box1').eq(numNotes);
+        var stickynote = $('<div class="note "style="background-color: rgb(61,61,255)"  />').appendTo($(selectedDiv));
+        $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
+        numNotes++;
+        localStorage.setItem('numNotes', JSON.stringify(numNotes));
+        }
+    };
+    function greenNote()
+    {
+       if (numNotes < 8)
+       {
+        var selectedDiv = $('div #box1').eq(numNotes);
+        var stickynote = $('<div class="note "style="background-color: rgb(102,255,51)"  />').appendTo($(selectedDiv));
         $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
         numNotes++;
         localStorage.setItem('numNotes', JSON.stringify(numNotes));
         }
     };
 
-   
-    $(document).ready(function(e) {
+    $(document).ready(function() {
        
-        $('#newNote').click(function()
-        {
-            Note();
-            return false;
-        });
+     //   $('#noteColor').hide();
     });
+
+   
+    //$(document).ready(function(e) {
+       
+    //    $('#newNote').click(function()
+    //    {
+    //        Note();
+    //        return false;
+    //    });
+    //});
 
     $(document).ready(function(e) {
        
@@ -143,6 +217,99 @@
             return false;
         });
     });
+
+
+
+
+    $(document).ready(function()
+    {
+        //open popup
+        $("#newNote").click(function()
+        {
+            $("#overlay_form").fadeIn(1000);
+             positionPopup();
+        });
+
+        
+    });
+
+    //create yellow note
+    $("#yellowBox").click(function()
+    {
+        //color = $(this).css("background-color");
+        yellowNote();
+        $("#overlay_form").fadeOut(500);
+        return false;
+    });
+    //create red note
+    $("#redBox").click(function()
+    {
+       // color = $(this).css("background-color");
+        redNote();
+        $("#overlay_form").fadeOut(500);
+        return false;
+    });
+    //create blue note
+    $("#blueBox").click(function()
+    {
+      //  color = $(this).css("background-color");
+        blueNote();
+        $("#overlay_form").fadeOut(500);
+        return false;
+    });
+    //create green note
+    $("#greenBox").click(function()
+    {
+      //  color = $(this).css("background-color");
+        greenNote();
+        $("#overlay_form").fadeOut(500);
+        return false;
+    });
+
+    
+
+    //create note
+    $("#createNote").click(function()
+    {
+        Note();
+        $("#overlay_form").fadeOut(500);
+        return false;
+    });
+     
+    //close popup
+    $("#close").click(function(){
+        $("#overlay_form").fadeOut(500);
+    });
+    
+     
+    //position the popup at the center of the page
+    function positionPopup(){
+    if(!$("#overlay_form").is(':visible')){
+    return;
+    }
+    $("#overlay_form").css({
+    left: ($(window).width() - $('#overlay_form').width()) / 2,
+    top: ($(window).width() - $('#overlay_form').width()) / 7,
+    position:'absolute'
+    });
+    }
+     
+    //maintain the popup at center of the page when browser resized
+    $(window).bind('resize',positionPopup);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </script>
             
 </body>  
