@@ -22,6 +22,8 @@
             <div class ="container">
 
                 <form id="overlay_form" style="display:none">
+                    <input type = "text" name="idText" placeholder ="Enter Work Item ID" required/>
+                    <input type = "text" name="noteDescription" placeholder = "Enter Work item Description" />
                     <h2> Choose Colour</h2>
                     <div id="yellowBox"></div>
                         <div id="redBox"></div>
@@ -138,8 +140,23 @@
     {
        if (numNotes < 8)
        {
+
+        
         var selectedDiv = $('div #box1').eq(numNotes);
-        var stickynote = $('<div class="note "style="background-color: rgb(255,61,61)"  />').appendTo($(selectedDiv));
+
+
+        //var stickynote = $('<div class="note "style="background-color: rgb(255,61,61)"  /><h1>"test"</h1>').appendTo($(selectedDiv));
+       // var newDiv = document.getElementByClassName('.note');
+       // newDiv.innerHTML = "Testing";
+       // document.body.appendTo($(newDiv));
+
+
+       var stickynote = document.createElement("div");
+       stickynote.className = "note";
+       stickynote.innerHTML ="testting";
+      // stickynote.background-color = color;
+       stickynote.appendTo($(selectedDiv));
+
         //$(this).css({"background-color": color});
         //stickynote.style.cssText = 'background-color:' + color;
        
@@ -148,12 +165,22 @@
         localStorage.setItem('numNotes', JSON.stringify(numNotes));
         }
     };
+
+    function addText()
+    {
+
+    }
     function yellowNote()
     {
        if (numNotes < 8)
        {
+        overlay_form 
+        var noteId = document.forms[0].idText.value;
+        var noteDesc = document.forms[0].noteDescription.value;
         var selectedDiv = $('div #box1').eq(numNotes);
         var stickynote = $('<div class="note "style="background-color: rgb(255,240,70)"  />').appendTo($(selectedDiv));
+        var textHead = $('<h1 class = "noteHead ">' + noteId + '</h1>').appendTo($(stickynote));
+        var textDesc = $('<p class = "noteP ">' + noteDesc + '</p>').appendTo($(stickynote));
         $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
         numNotes++;
         localStorage.setItem('numNotes', JSON.stringify(numNotes));
@@ -163,8 +190,12 @@
     {
        if (numNotes < 8)
        {
+        var noteId = document.forms[0].idText.value;
+        var noteDesc = document.forms[0].noteDescription.value;
         var selectedDiv = $('div #box1').eq(numNotes);
         var stickynote = $('<div class="note "style="background-color: rgb(255,61,61)"  />').appendTo($(selectedDiv));
+        var textHead = $('<h1 class = "noteHead ">' + noteId + '</h1>').appendTo($(stickynote));
+        var textDesc = $('<p class = "noteP ">' + noteDesc + '</p>').appendTo($(stickynote));
         $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
         numNotes++;
         localStorage.setItem('numNotes', JSON.stringify(numNotes));
@@ -174,8 +205,12 @@
     {
        if (numNotes < 8)
        {
+        var noteId = document.forms[0].idText.value;
+        var noteDesc = document.forms[0].noteDescription.value;
         var selectedDiv = $('div #box1').eq(numNotes);
         var stickynote = $('<div class="note "style="background-color: rgb(61,61,255)"  />').appendTo($(selectedDiv));
+         var textHead = $('<h1 class = "noteHead ">' + noteId + '</h1>').appendTo($(stickynote));
+        var textDesc = $('<p class = "noteP ">' + noteDesc + '</p>').appendTo($(stickynote));
         $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
         numNotes++;
         localStorage.setItem('numNotes', JSON.stringify(numNotes));
@@ -185,8 +220,12 @@
     {
        if (numNotes < 8)
        {
+        var noteId = document.forms[0].idText.value;
+        var noteDesc = document.forms[0].noteDescription.value;
         var selectedDiv = $('div #box1').eq(numNotes);
         var stickynote = $('<div class="note "style="background-color: rgb(102,255,51)"  />').appendTo($(selectedDiv));
+         var textHead = $('<h1 class = "noteHead ">' + noteId + '</h1>').appendTo($(stickynote));
+        var textDesc = $('<p class = "noteP ">' + noteDesc + '</p>').appendTo($(stickynote));
         $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
         numNotes++;
         localStorage.setItem('numNotes', JSON.stringify(numNotes));
@@ -244,7 +283,7 @@
     //create red note
     $("#redBox").click(function()
     {
-       // color = $(this).css("background-color");
+        color = $(this).css("background-color");
         redNote();
         $("#overlay_form").fadeOut(500);
         return false;
