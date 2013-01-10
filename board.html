@@ -1,4 +1,4 @@
-<!DOCTYPE html>  
+<!DOCTYPE html> 
 <html lanf="en">  
 <head>  
     <meta charset='utf-8' />  
@@ -34,66 +34,26 @@
                 
                     </form>       
                 <div class = "menu">
-                
-
-
-                   
                       
                     <a href="#" id="newNote">
                         <img src="images/add.png" alt="Add Sticky Note" title="Add a new sticky note" />
                     </a>
-                    
-                    
                     
                     <input type ="button" id="clearStorage" value = "Clear Local Storage" />
                    <!-- <button id="newNote"> Create New Note </button>-->
                 </div>
                
                 <div class ="boxheaders">
-                    <div id="todo"><h1>To Do</h1> </div>
-                    <div id="inprogress"><h1>In Progress</h1></div>
-                    <div id ="done"><h1>Done</h1></div>
+                    <div id="todo-header"><h1>To Do</h1> </div>
+                    <div id="inprogress-header"><h1>In Progress</h1></div>
+                    <div id ="done-header"><h1>Done</h1></div>
                 </div>
-                <!--
-                 <div class="note" >
-                    <h1> Title</h1>
-                    <p>Text of the note</p>
-                    <footer>06-01-2013</footer>
-
-                </div>
-               -->
                 <div class = "box">
                     <div id="todo">
-                        <div id="box1"></div>
-                        <div id="box1"></div>
-                         <div id="box1"></div>
-                        <div id="box1"></div>
-                        <div id="box1"></div>
-                        <div id="box1"></div>
-                         <div id="box1"></div>
-                        <div id="box1"></div>
                     </div>
                     <div id="inprogress">
-                        <div id="box1"></div>
-                        <div id="box1"></div>
-                         <div id="box1"></div>
-                        <div id="box1"></div>
-                        <div id="box1"></div>
-                        <div id="box1"></div>
-                         <div id="box1"></div>
-                        <div id="box1"></div>
                     </div>
                     <div id ="done">
-                        <div id="box1"></div>
-                        <div id="box1"></div>
-                         <div id="box1"></div>
-                        <div id="box1"></div>
-                        <div id="box1"></div>
-                        <div id="box1"></div>
-                         <div id="box1"></div>
-                        <div id="box1"></div>
-
-
                     </div>
                 </div>
             </div>
@@ -111,81 +71,48 @@
 
     $(document).ready(function(e) {
 
-       // alert("testing storage");
-           if (localStorage.getItem('numNotes')) {
-            numNotes = JSON.parse(localStorage.getItem('numNotes'));
-            if (!numNotes > 0)
-            {
-                numNotes = 0;
-            }
-           // alert("exists! , numNotes = " + numNotes)
-                for (var i = 0; i < numNotes; i++)
-                {
-                   LoadNote();
-                }
-            }
-        });
-    
-     function LoadNote()
+         $( "div #todo" ).droppable({
+                drop: function( event, ui ) {
+                MoveNote(ui.draggable, $('div #todo'));
+              }
+           });
+
+         $( "div #inprogress" ).droppable({
+                drop: function( event, ui ) {
+                MoveNote(ui.draggable, $('div #inprogress'));
+              }
+           });
+
+      });
+
+    function MoveNote($item,$target)
     {
-        var selectedDiv = $('div #box1').eq(loadNoteNum);
-        var stickynote = $('<div class="note " />').appendTo($(selectedDiv));
-
-        $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
-        loadNoteNum++;
-    };
-
-
-    function Note()
-    {
-       if (numNotes < 8)
-       {
-
-        
-        var selectedDiv = $('div #box1').eq(numNotes);
-
-
-        //var stickynote = $('<div class="note "style="background-color: rgb(255,61,61)"  /><h1>"test"</h1>').appendTo($(selectedDiv));
-       // var newDiv = document.getElementByClassName('.note');
-       // newDiv.innerHTML = "Testing";
-       // document.body.appendTo($(newDiv));
-
-
-       var stickynote = document.createElement("div");
-       stickynote.className = "note";
-       stickynote.innerHTML ="testting";
-      // stickynote.background-color = color;
-       stickynote.appendTo($(selectedDiv));
-
-        //$(this).css({"background-color": color});
-        //stickynote.style.cssText = 'background-color:' + color;
-       
-        $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
-        numNotes++;
-        localStorage.setItem('numNotes', JSON.stringify(numNotes));
-        }
-    };
-
+        var selectedDiv = $target;
+        var stickyNote = $('<div class="note "style="background-color: rgb(255,240,70)"  />').appendTo($(selectedDiv));
+        var noteId = $item.find('h1:first').appendTo($(stickyNote));
+        var noteDesc = $item.find('p:first').appendTo($(stickyNote));
+        $item.remove(); 
+        $( ".note" ).draggable({ containment: "container", scroll: false});
+    }
+ 
     function addText()
     {
 
     }
-    function yellowNote()
+    function NewNote($noteColor)
     {
-       if (numNotes < 8)
-       {
-        overlay_form 
         var noteId = document.forms[0].idText.value;
         var noteDesc = document.forms[0].noteDescription.value;
-        var selectedDiv = $('div #box1').eq(numNotes);
-        var stickynote = $('<div class="note "style="background-color: rgb(255,240,70)"  />').appendTo($(selectedDiv));
+        var selectedDiv = $('div #todo');
+        var stickynote = $('<div class="note" />').appendTo($(selectedDiv));
+        $(stickynote).css('background-colour',$noteColor);
         var textHead = $('<h1 class = "noteHead ">' + noteId + '</h1>').appendTo($(stickynote));
         var textDesc = $('<p class = "noteP ">' + noteDesc + '</p>').appendTo($(stickynote));
-        $( ".note" ).draggable({ containment: ".box #todo", scroll: false });
+        $( ".note" ).draggable({ containment: "container", scroll: false });
         numNotes++;
         localStorage.setItem('numNotes', JSON.stringify(numNotes));
-        }
     };
+
     function redNote()
     {
        if (numNotes < 8)
@@ -237,16 +164,6 @@
      //   $('#noteColor').hide();
     });
 
-   
-    //$(document).ready(function(e) {
-       
-    //    $('#newNote').click(function()
-    //    {
-    //        Note();
-    //        return false;
-    //    });
-    //});
-
     $(document).ready(function(e) {
        
         $('#clearStorage').click(function()
@@ -275,37 +192,33 @@
     //create yellow note
     $("#yellowBox").click(function()
     {
-        //color = $(this).css("background-color");
-        yellowNote();
+        NewNote($(this).css("background-color"));
         $("#overlay_form").fadeOut(500);
         return false;
     });
     //create red note
     $("#redBox").click(function()
     {
-        color = $(this).css("background-color");
-        redNote();
+        NewNote($(this).css("background-color"));
         $("#overlay_form").fadeOut(500);
         return false;
     });
     //create blue note
     $("#blueBox").click(function()
     {
-      //  color = $(this).css("background-color");
-        blueNote();
-        $("#overlay_form").fadeOut(500);
-        return false;
-    });
-    //create green note
-    $("#greenBox").click(function()
-    {
-      //  color = $(this).css("background-color");
-        greenNote();
+        NewNote($(this).css("background-color"));
         $("#overlay_form").fadeOut(500);
         return false;
     });
 
-    
+    //create green note
+    $("#greenBox").click(function()
+    {
+        NewNote($(this).css("background-color"));
+        $("#overlay_form").fadeOut(500);
+        return false;
+    });
+
 
     //create note
     $("#createNote").click(function()
@@ -335,12 +248,6 @@
      
     //maintain the popup at center of the page when browser resized
     $(window).bind('resize',positionPopup);
-
-
-
-
-
-
 
 
 

@@ -307,8 +307,9 @@ canvas {
     background-color: rgb(255,240,70);
     height: 120px;
     width:120px;
+    margin: 10px 10px 10px 10px;
     padding: 0px;
-    position: absolute;
+    float: left;
     outline: 1px black solid;
     -webkit-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
     -moz-box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
@@ -374,7 +375,7 @@ canvas {
 
 }
 
-.boxheaders #todo {
+.boxheaders #todo-header {
    
      width: 300px;
      border: 1px solid #555;
@@ -382,7 +383,7 @@ canvas {
       border: 1px solid #555;
 }
 
-.boxheaders #inprogress {
+.boxheaders #inprogress-header {
     
      width: 300px;
      border: 1px solid #555;
@@ -390,7 +391,7 @@ canvas {
  
 }
 
-.boxheaders #done {
+.boxheaders #done-header {
  
      width: 300px;
      border: 1px solid #555;
