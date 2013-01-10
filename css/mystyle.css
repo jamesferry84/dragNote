@@ -304,7 +304,7 @@ canvas {
 
 .note {
      
-    background-color: rgb(255,240,70);
+   
     height: 120px;
     width:120px;
     margin: 10px 10px 10px 10px;
@@ -374,6 +374,9 @@ canvas {
 
 
 }
+
+#todo .custom-state-active { background: #eee; }
+#inprogress .custom-state-active { background: #bbb; }
 
 .boxheaders #todo-header {
    
