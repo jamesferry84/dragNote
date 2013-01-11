@@ -93,6 +93,19 @@
               }
              // }
            });
+         $( "div #done" ).droppable({
+
+             hoverClass: "ui-state-active",
+             
+              drop: function(event, ui) {
+               var targetElem = $(this).attr("id");
+               $(ui.draggable).clone().appendTo("#done");
+    
+                MoveNote(ui.draggable, $('div #done'));
+              }
+             // }
+           });
+
 
       });
 
