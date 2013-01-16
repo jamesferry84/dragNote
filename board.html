@@ -76,7 +76,9 @@
               drop: function(event, ui) {
                var targetElem = $(this).attr("id");
                $(ui.draggable).clone().appendTo("#todo");
-
+               var d = new Date();
+               $('.note #todoDate').html('<p id="todoDate">Date ToDo: ' + d + '</p>');
+               $('.note #todoDate').css('display', 'none');
                 MoveNote(ui.draggable, $('div #todo'));
               }
            });
@@ -87,11 +89,14 @@
              
               drop: function(event, ui) {
                var targetElem = $(this).attr("id");
+              
                $(ui.draggable).clone().appendTo("#inprogress");
-    
-                MoveNote(ui.draggable, $('div #inprogress'));
+                var d = new Date();
+               $('.note #inProgressDate').html('<p id="inProgressDate">Date inProgress: ' + d + '</p>');
+               $('.note #inProgressDate').css('display', 'none');
+              MoveNote(ui.draggable, $('div #inprogress'));
               }
-             // }
+
            });
          $( "div #done" ).droppable({
 
@@ -100,10 +105,12 @@
               drop: function(event, ui) {
                var targetElem = $(this).attr("id");
                $(ui.draggable).clone().appendTo("#done");
-    
+                var d = new Date();
+               $('.note #doneDate').html('<p id="doneDate">Date Done: ' + d + '</p>');
+               $('.note #doneDate').css('display', 'none');
                 MoveNote(ui.draggable, $('div #done'));
               }
-             // }
+
            });
 
 
@@ -112,9 +119,15 @@
     //function MoveNote($item,$target)
     function MoveNote($item , $target)
     {
-        $item.remove(); 
-         $( ".note" ).draggable({ containment: "container", revert: "invalid", helper: "clone", scroll: false });
+       // $item.fadeOut('fast');
+        
+       $item.remove();
+        $( ".note" ).draggable({ containment: "container", revert: "invalid", helper: "clone", scroll: false });
+       
     }
+
+
+
  
     function addText()
     {
@@ -122,6 +135,7 @@
     }
     function NewNote()
     {
+        var d = new Date();
         var noteId = document.forms[0].idText.value;
         var noteDesc = document.forms[0].noteDescription.value;
         var selectedDiv = $('div #todo');
@@ -132,7 +146,14 @@
        // stickynote.style.cssText('background-colour:' + color);
         $(selectedDiv).append($(stickynote));
         var textHead = $('<h1 class = "noteHead ">' + noteId + '</h1>').appendTo($(stickynote));
-        var textDesc = $('<p class = "noteP ">' + noteDesc + '</p>').appendTo($(stickynote));
+        var textDesc = $('<p>' + noteDesc + '</p>').appendTo($(stickynote));
+
+        $('.note').append('<p id="todoDate">Date ToDo: ' + d + '</p>');
+        $('.note').append('<p id="inProgressDate">Date inProgress: ' + d + '</p>');
+        $('.note').append('<p id="doneDate">Date done: ' + d + '</p>');
+        $('.note #todoDate').css('display', 'none');
+        $('.note #inProgressDate').css('display', 'none');
+        $('.note #doneDate').css('display', 'none');
         $( ".note" ).draggable({ containment: "container", revert: "invalid", helper: "clone", scroll: false });
         numNotes++;
         localStorage.setItem('numNotes', JSON.stringify(numNotes));
