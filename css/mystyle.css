@@ -37,7 +37,7 @@ margin: 0 auto;
 .container { 
    
     width: 95%; 
-    height:100%px; 
+    height:100%; 
     border:2px solid #ccc; 
     padding: 50px; 
 }
@@ -244,6 +244,11 @@ canvas {
 
 }
 
+.box .generic {
+     width: 300px;
+     border: 1px solid #555;
+}
+
 .box #generic {
      width: 300px;
      border: 1px solid #555;
@@ -385,6 +390,12 @@ canvas {
 #inprogress .custom-state-active { background: #bbb; }
 
 .boxheaders #generic-header {
+    width: 300px;
+     border: 1px solid #555;
+     background-color: #14000d;
+}
+
+.boxheaders .generic-header {
     width: 300px;
      border: 1px solid #555;
      background-color: #14000d;

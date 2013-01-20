@@ -5,52 +5,16 @@ var g = 0;
 var b = 0;
 var color = null;
 
-var namesOfColumns = [];
+var namesOfColumnsIds = ["#todo","#inprogress","#done"];
 
 
 
 
 $(document).ready(function() {
 
-  $( "div #todo" ).droppable({
-    hoverClass: "ui-state-active",
-    drop: function(event, ui) {
-      var targetElem = $(this).attr("id");
-      $(ui.draggable).clone().appendTo("#todo");
-      var d = new Date();
-      $('.note #todoDate').html('<p id="todoDate">' + d + '</p>');
-      $('.note #todoDate').css('display', 'none');
-      MoveNote(ui.draggable, $('div #todo'));
-    }
-  });
+  Setup();
 
-  $( "div #inprogress" ).droppable({
-    hoverClass: "ui-state-active",
-    drop: function(event, ui) {
-      var targetElem = $(this).attr("id");
-      $(ui.draggable).clone().appendTo("#inprogress");
-      var d = new Date();
-      $('.note #inProgressDate').html('<p id="inProgressDate">' + d + '</p>');
-      $('.note #inProgressDate').css('display', 'none');
-      MoveNote(ui.draggable, $('div #inprogress'));
-    }
-  });
-
-  $( "div #done" ).droppable({
-    hoverClass: "ui-state-active",
-    drop: function(event, ui) {
-      var targetElem = $(this).attr("id");
-      $(ui.draggable).clone().appendTo("#done");
-      var d = new Date();
-      $('.note #doneDate').html('<p id="doneDate">' + d + '</p>');
-      $('.note #doneDate').css('display', 'none');
-      MoveNote(ui.draggable, $('div #done'));
-    }
-
-  });
-
-
-
+ 
   //create yellow note
   $("#yellowBox").click(function()
   {
@@ -133,6 +97,11 @@ $(document).ready(function() {
       positionPopup2();
   });
 
+  $('#closeCol').click(function() {
+      $("#overlay_form2").fadeOut(500);
+       return false;
+  });
+
   $('#createBoard').click(function() {
       var nameOfCol = $('#addCol').val();
       AddColumn(nameOfCol);
@@ -147,13 +116,56 @@ $(document).ready(function() {
     $('.box').append('<div id ="done"></div>');
   });
 
- 
 
 }); //End Document.ready
 
+function Setup() {
+
+  for (var i = 0; i < namesOfColumnsIds.length; i++)
+  {
+
+    $( "div " + namesOfColumnsIds[i] ).droppable({
+      hoverClass: "ui-state-active",
+      drop: function(event, ui) {
+        var targetElem = $(this).attr("id");
+        $(ui.draggable).clone().appendTo(this);
+       //alert(targetElem);
+        var d = new Date();
+        $('.note #todoDate').html('<p id= ' +  targetElem + 'Date>' + d + '</p>');
+        $('.note #todoDate').css('display', 'none');
+        $( ".note" ).draggable({ containment: "container", revert: "invalid", helper: "clone", scroll: false });
+        MoveNote(ui.draggable, $('div ' + namesOfColumnsIds[i]));
+      }
+    });
+  }
+
+};
+
+function SetupNewColumn(num) {
+  var i = num;
+    $( "div " + namesOfColumnsIds[i] ).droppable({
+      hoverClass: "ui-state-active",
+      drop: function(event, ui) {
+        var targetElem = $(this).attr("id");
+        $(ui.draggable).clone().appendTo(this);
+        var d = new Date();
+        $('.note #todoDate').html('<p id= ' +  targetElem + 'Date>' + d + '</p>');
+        $('.note #todoDate').css('display', 'none');
+        $( ".note" ).draggable({ containment: "container", revert: "invalid", helper: "clone", scroll: false });
+        MoveNote(ui.draggable, $('div ' + namesOfColumnsIds[i]));
+      }
+    });
+
+};
+
 function AddColumn($name) {
-    $('.boxheaders').append('<div id ="generic-header"><h1>' + $name  + '</h1></div>');
-    $('.box').append('<div id ="generic"></div>');
+    $('.boxheaders').append('<div id = ' + $name +' class="generic-header"><h1>' + $name  + '</h1></div>');
+    $('.box').append('<div id =' + $name + ' class="generic ui-droppable" ></div>');
+    //get number of current array elements
+    var numOfElems = namesOfColumnsIds.length;
+    namesOfColumnsIds.push(name);
+    //alert(namesOfColumnsIds.length);
+    SetupNewColumn(numOfElems);
 };
 
 
@@ -162,7 +174,7 @@ function MoveNote($item , $target)
 {
   // $item.fadeOut('fast');
   $item.remove();
-  $( ".note" ).draggable({ containment: "container", revert: "invalid", helper: "clone", scroll: false });
+  
 }
 
 function addText()
