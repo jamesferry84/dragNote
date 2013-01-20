@@ -124,30 +124,37 @@ function Setup() {
   for (var i = 0; i < namesOfColumnsIds.length; i++)
   {
 
-    $( "div " + namesOfColumnsIds[i] ).droppable({
+    $( namesOfColumnsIds[i] ).droppable({
+
       hoverClass: "ui-state-active",
       drop: function(event, ui) {
+        
         var targetElem = $(this).attr("id");
-        $(ui.draggable).clone().appendTo(this);
+        ui.draggable.clone().appendTo($(this));
        //alert(targetElem);
         var d = new Date();
         $('.note #todoDate').html('<p id= ' +  targetElem + 'Date>' + d + '</p>');
         $('.note #todoDate').css('display', 'none');
         $( ".note" ).draggable({ containment: "container", revert: "invalid", helper: "clone", scroll: false });
         MoveNote(ui.draggable, $('div ' + namesOfColumnsIds[i]));
+
       }
     });
+    //return false;
   }
 
 };
 
-function SetupNewColumn(num) {
-  var i = num;
+
+
+function SetupNewColumn($num) {
+  var i = $num;
     $( "div " + namesOfColumnsIds[i] ).droppable({
+
       hoverClass: "ui-state-active",
       drop: function(event, ui) {
-        var targetElem = $(this).attr("id");
-        $(ui.draggable).clone().appendTo(this);
+       var targetElem = $(this).attr("id");
+        $(ui.draggable).clone().appendTo($(this));
         var d = new Date();
         $('.note #todoDate').html('<p id= ' +  targetElem + 'Date>' + d + '</p>');
         $('.note #todoDate').css('display', 'none');
@@ -155,25 +162,35 @@ function SetupNewColumn(num) {
         MoveNote(ui.draggable, $('div ' + namesOfColumnsIds[i]));
       }
     });
-
+   
 };
 
 function AddColumn($name) {
     $('.boxheaders').append('<div id = ' + $name +' class="generic-header"><h1>' + $name  + '</h1></div>');
     $('.box').append('<div id =' + $name + ' class="generic ui-droppable" ></div>');
+    $('.box' + $name).droppable();
     //get number of current array elements
-    var numOfElems = namesOfColumnsIds.length;
-    namesOfColumnsIds.push(name);
+    var number = namesOfColumnsIds.length;
+    namesOfColumnsIds.push('#' + $name);
     //alert(namesOfColumnsIds.length);
-    SetupNewColumn(numOfElems);
+    SetupNewColumn(number);
 };
 
 
 //function MoveNote($item,$target)
+function MoveNote2($item)
+{
+  var targetElem = $(this).attr("id");
+  $item.appendTo(this);
+    
+  //$item.remove();
+  
+}
+
 function MoveNote($item , $target)
 {
   // $item.fadeOut('fast');
-  $item.remove();
+  $item.fadeOut('fast');
   
 }
 
