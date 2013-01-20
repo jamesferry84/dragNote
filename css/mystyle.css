@@ -117,21 +117,7 @@ canvas {
 	cursor: none;
 }
 
-.box {
-   
-    height: 600px;
-    width: 100%;
-   
-    font: 14px Arial;
-    display: -webkit-box;
-    -webkit-box-orient: horizontal;
-    display: -moz-box;
-    -moz-box-orient: horizontal;
-    display: box;
-    box-orient: horizontal;
 
-
-}
 #yellowBox:hover {
     -webkit-transform: scale(1.2);
     -ms-transform: scale(1.2);
@@ -242,8 +228,29 @@ canvas {
     
 }
 
+.box {
+   
+    height: 600px;
+   width: 100%;
+   
+    font: 14px Arial;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+    display: box;
+    box-orient: horizontal;
+
+
+}
+
+.box #generic {
+     width: 300px;
+     border: 1px solid #555;
+}
+
 .box #todo {
-        width: 300px;
+    width: 300px;
 
      border: 1px solid #555;
 
@@ -362,36 +369,33 @@ canvas {
 
 
 .boxheaders {
-   
     height: 60px;
     width: 100%;
-   
     display: -webkit-box;
     -webkit-box-orient: horizontal;
     display: -moz-box;
     -moz-box-orient: horizontal;
     display: box;
     box-orient: horizontal;
-
     text-align: center; 
-   
     color: #575757; 
-
-   
-    
-
-
 }
 
 #todo .custom-state-active { background: #eee; }
 #inprogress .custom-state-active { background: #bbb; }
+
+.boxheaders #generic-header {
+    width: 300px;
+     border: 1px solid #555;
+     background-color: #14000d;
+}
 
 .boxheaders #todo-header {
    
      width: 300px;
      border: 1px solid #555;
      background-color: #14720d;
-      border: 1px solid #555;
+
 }
 
 .boxheaders #inprogress-header {

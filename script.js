@@ -5,6 +5,8 @@ var g = 0;
 var b = 0;
 var color = null;
 
+var namesOfColumns = [];
+
 
 
 
@@ -131,6 +133,13 @@ $(document).ready(function() {
       positionPopup2();
   });
 
+  $('#createBoard').click(function() {
+      var nameOfCol = $('#addCol').val();
+      AddColumn(nameOfCol);
+       $("#overlay_form2").fadeOut(500);
+       return false;
+  });
+
 
   $('#addColumn').click(function() {
 
@@ -141,6 +150,11 @@ $(document).ready(function() {
  
 
 }); //End Document.ready
+
+function AddColumn($name) {
+    $('.boxheaders').append('<div id ="generic-header"><h1>' + $name  + '</h1></div>');
+    $('.box').append('<div id ="generic"></div>');
+};
 
 
 //function MoveNote($item,$target)
